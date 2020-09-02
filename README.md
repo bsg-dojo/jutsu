@@ -5,7 +5,7 @@
 
 In order to use jutsu, you need a fully-synced Bitcoin full node with the rpc server enabled in `bitcoin.conf`.
 
-[![jutsu](./jutsu.png)](./jutsu.png)
+[![jutsu](https://github.com/merwane/jutsu/raw/master/jutsu.png)](https://github.com/merwane/jutsu)
 
 ## Installation
 ---------------
