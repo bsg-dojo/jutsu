@@ -9,7 +9,7 @@ colorama.init()
 def calculate_circulating(n):
     """returns total amount of Bitcoin in the UTXO set"""
     c = n.gettxoutsetinfo()
-    return c['total_amount']
+    return c['total_amount'], c['height']
 
 def calculate_max():
     """calculates the maximum supply based on btcdirect.eu/en-gb/how-many-bitcoin"""
@@ -32,10 +32,12 @@ def supply(n):
     start = time.time()
     c = calculate_circulating(n)
     maximum = calculate_max()
-    valid = circ_is_valid(c, maximum)
+    valid = circ_is_valid(c[0], maximum)
+    calc_sup = (209999*50)+(210000*25)+(210000*12.5)+((int(c[1])-630000)*6.25)
     end = time.time()
     print("\n")
-    print(colorama.Fore.WHITE + "Circulating supply:   "+ colorama.Fore.GREEN + str(c) + colorama.Fore.WHITE + " BTC")
+    print(colorama.Fore.WHITE + "Circulating supply:   "+ colorama.Fore.GREEN + str(c[0]) + colorama.Fore.WHITE + " BTC")
+    print(colorama.Fore.WHITE + "Calculated supply:   ~"+ colorama.Fore.GREEN + str(calc_sup) + colorama.Fore.WHITE + " BTC")
     print(colorama.Fore.WHITE + "Maximum supply:       "+ colorama.Fore.GREEN + str(maximum) + colorama.Fore.WHITE + " BTC")
     print(colorama.Fore.WHITE + "Valid supply:         "+ colorama.Fore.GREEN + str(valid) + colorama.Fore.WHITE + "")
     print("\n")

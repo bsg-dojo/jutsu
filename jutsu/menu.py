@@ -30,7 +30,7 @@ confirm = [
 
 def menu(n):
     answers = prompt(menu_items)
-    if answers['menu'] == "Circulating and total supply":
+    if answers['menu'] == "Circulating and maximum supply":
         confirmation = prompt(confirm)
         if confirmation['continue'] == True:
             supply(n)
